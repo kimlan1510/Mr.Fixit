@@ -6,20 +6,11 @@
 @model MrFixIt.Models.Job
 
 <p>are you sure?</p>
-@*@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
-
-    <h4>@Model.Title</h4>
-    <input type="submit" value="Yes" />
-}*@
-
 <form method="post" action="Claim" class="ClaimJobForm">
     <input type="hidden" name="JobId" value=@Model.JobId>
     <input type="hidden" name="Title" value=@Model.Title/>
     <input type="hidden" name="Description" value=@Model.Description/>
     <button type="submit">Claim this job</button>
 </form>
+<div class="ClaimedMessage"></div>
 <p>@Html.ActionLink("Back to list", "Index")</p>
