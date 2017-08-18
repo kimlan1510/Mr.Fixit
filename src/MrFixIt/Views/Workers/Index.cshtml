@@ -13,18 +13,28 @@
                     <strong>Done!</strong>
 
                 }
-                else
+                else if(@Job.Pending == true)
                 {
-                    <strong>In Progress!</strong>
+                    <strong>Working on it</strong>
 
                 }
+                else if(Job.Pending == false)
+                {
+                    <strong>Pending!</strong>
+
+                }
+
 
             </h5>
             @if (@Job.Completed == false)
             {
                 <form class="JobDone">
                     <input type="hidden" value="@Job.JobId" name="JobId"/>
-                    <button type="submit">Mark as done!</button>
+                    <button type="submit">Done!</button>
+                </form>
+                <form class="JobPending">
+                    <input type="hidden" value="@Job.JobId" name="JobId" />
+                    <button type="submit">Working On It</button>
                 </form>
 
             }

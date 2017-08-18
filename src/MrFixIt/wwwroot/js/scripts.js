@@ -17,9 +17,7 @@
             url: '/Jobs/Claimed',
             data: $(this).serialize(),
             success: function (result) {
-                console.log(result);
-                var resultMessage = 'You claimed this job! ';
-                $('.ClaimedMessage').html(resultMessage);
+                window.location.reload();
             }
         });
     });
@@ -29,6 +27,18 @@
         $.ajax({
             type: 'POST',
             url: '/Jobs/MarkDone',
+            data: $(this).serialize(),
+            success: function () {
+                window.location.reload();
+            }
+        });
+    });
+    //Mark a job as pending
+    $('.JobPending').submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/Jobs/MarkPending',
             data: $(this).serialize(),
             success: function () {
                 window.location.reload();
