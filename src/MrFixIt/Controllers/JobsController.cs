@@ -32,13 +32,13 @@ namespace MrFixIt.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        public IActionResult Claim(int id)
+        [Route("/Jobs/Claims")]
+        public IActionResult Claim(int JobId)
         {
-            var thisItem = db.Jobs.FirstOrDefault(items => items.JobId == id);
-            return View(thisItem);
+            var thisJob = db.Jobs.FirstOrDefault(items => items.JobId == JobId);
+            return View(thisJob);
         }
-
+        [Route("/Jobs/Claimed")]
         [HttpPost]
         public IActionResult Claim(Job job)
         {

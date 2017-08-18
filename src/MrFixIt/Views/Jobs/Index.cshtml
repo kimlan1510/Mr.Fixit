@@ -16,14 +16,22 @@
         </ul>
         @if (Job.Worker == null)
         {
-        <li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>
+        @*<li class="btn">This job is unclaimed. @Html.ActionLink("Claim This Job", "Claim", new { @text = @Job.Title, id = Job.JobId })</li>*@
+        <li>This job is unclaimed. 
+            <form class="ClaimJob" action="Claim">
+                <input type="hidden" value=@Job.JobId name="JobId"/>
+                <button type="submit">claim this job</button>
+            </form>
+            <div id="ShowClaimForm"></div>
+        </li>
         }
         else
         {
-            <li class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+            <li>This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
 
         }
     </ul>
+        
 
 
     <hr />

@@ -5,8 +5,7 @@
 
 @model MrFixIt.Models.Job
 
-<h2>Would you like to do this job?</h2>
-<hr />
+<p>are you sure?</p>
 @*@using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.JobId)
@@ -14,14 +13,13 @@
     @Html.HiddenFor(model => model.Description)
 
     <h4>@Model.Title</h4>
-    <input type="submit" value="Claim This Job" />
+    <input type="submit" value="Yes" />
 }*@
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<form method="post" action="Claim" class="ClaimJob">
+
+<form method="post" action="Claim" class="ClaimJobForm">
     <input type="hidden" name="JobId" value=@Model.JobId>
     <input type="hidden" name="Title" value=@Model.Title/>
     <input type="hidden" name="Description" value=@Model.Description/>
     <button type="submit">Claim this job</button>
-
-
 </form>
+<p>@Html.ActionLink("Back to list", "Index")</p>
