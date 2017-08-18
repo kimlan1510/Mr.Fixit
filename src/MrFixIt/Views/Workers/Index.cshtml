@@ -7,7 +7,27 @@
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
-            <h5>@Job.Title</h5>
+            <h5>Job Title: @Job.Title | Job Status: 
+                @if(@Job.Completed == true)
+                {
+                    <strong>Done!</strong>
+
+                }
+                else
+                {
+                    <strong>In Progress!</strong>
+
+                }
+
+            </h5>
+            @if (@Job.Completed == false)
+            {
+                <form class="JobDone">
+                    <input type="hidden" value="@Job.JobId" name="JobId"/>
+                    <button type="submit">Mark as done!</button>
+                </form>
+
+            }
 
         }
         @if (Model.Available)

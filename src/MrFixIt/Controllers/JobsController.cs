@@ -47,5 +47,15 @@ namespace MrFixIt.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Route("/Jobs/MarkDone")]
+        [HttpPost]
+        public IActionResult MarkDone(int JobId)
+        {
+            var job = db.Jobs.FirstOrDefault(j => j.JobId == JobId);
+            job.Completed = true;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(job);
+        }
     }
 }

@@ -23,5 +23,17 @@
             }
         });
     });
+    //Mark a job as finished
+    $('.JobDone').submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/Jobs/MarkDone',
+            data: $(this).serialize(),
+            success: function () {
+                window.location.reload();
+            }
+        });
+    });
    
 });
